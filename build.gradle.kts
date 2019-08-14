@@ -29,6 +29,9 @@ dependencies {
 	implementation("org.springframework.data:spring-data-redis")
 	implementation("redis.clients:jedis:2.9.0")
 	implementation("org.springframework.kafka:spring-kafka")
+	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+	testImplementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

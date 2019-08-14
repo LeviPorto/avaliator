@@ -2,8 +2,6 @@ package com.levi.avaliator.documents
 
 import java.util.*
 
-//TODO verificar se tudo ta private
-
 class SuggestedRestaurant (val id : UUID,
                            val name : String,
                            val address : String,
