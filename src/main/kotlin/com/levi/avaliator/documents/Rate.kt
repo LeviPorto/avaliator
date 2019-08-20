@@ -2,16 +2,15 @@ package com.levi.avaliator.documents
 
 import com.levi.avaliator.enuns.Improve
 import com.levi.avaliator.enuns.RangeTime
-import java.io.Serializable
+import org.springframework.data.cassandra.core.mapping.Column
+import org.springframework.data.cassandra.core.mapping.PrimaryKey
+import org.springframework.data.cassandra.core.mapping.Table
 import java.time.Instant
 import java.util.*
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
 
-@Entity
+@Table
 class Rate  (
-        @Id val id : UUID,
+        @PrimaryKey val id : UUID,
         @Column val value : Double,
         @Column val restaurantId : Int,
         @Column val orderId : Int,
@@ -21,4 +20,4 @@ class Rate  (
         @Column val arrivedOnTime : Boolean,
         @Column val arrivalRangeTime : RangeTime,
         @Column val canImprove : Improve
-) : Serializable
+)

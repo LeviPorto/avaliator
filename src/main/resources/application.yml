@@ -1,6 +1,8 @@
 spring:
   application:
     name: avaliator
+  main:
+    allow-bean-definition-overriding: true
 server:
   port: ${PORT:8081}
 eureka:
