@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 import java.text.ParseException
 
 @Component
-class RateDispatcher(private val kafkaTemplate: KafkaTemplate<String, AvaliatedRestaurantDTO>) {
+class RatePublisher(private val kafkaTemplate: KafkaTemplate<String, AvaliatedRestaurantDTO>) {
 
     @Value("\${spring.kafka.topic.rate}")
     var topicRate: String? = null

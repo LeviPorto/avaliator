@@ -1,7 +1,7 @@
 package com.levi.avaliator.services
 
 import com.levi.avaliator.apis.ManagerApi
-import com.levi.avaliator.dispatcher.RateDispatcher
+import com.levi.avaliator.dispatcher.RatePublisher
 import com.levi.avaliator.documents.Rate
 import com.levi.avaliator.dtos.AvaliatedRestaurantDTO
 import com.levi.avaliator.dtos.RateDTO
@@ -13,17 +13,16 @@ import java.util.stream.Collectors
 @Service
 class RateService(private val repository: RateRepository,
                   private val avaliatorProcessorService: AvaliatorProcessorService,
+                  private val ratePublisher: RatePublisher,
                   private val cachedAvaliatorProcessorService: CachedAvaliatorProcessorService,
-                  private val rateDispatcher: RateDispatcher,
                   private val managerApi : ManagerApi) {
 
     fun create(rate : Rate) : Rate {
         val createdRate = repository.insert(rate)
 
         val restaurantsAverageRate = retrieveRestaurantsAverageRate(rate)
+        ratePublisher.sendRateToTopic(AvaliatedRestaurantDTO(rate.restaurantId, restaurantsAverageRate, rate.value > 4.5))
 
-        rateDispatcher.sendRateToTopic(AvaliatedRestaurantDTO(rate.restaurantId,
-                restaurantsAverageRate, rate.value > 4.5))
         return createdRate
     }
 
