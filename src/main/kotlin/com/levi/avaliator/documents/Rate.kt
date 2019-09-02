@@ -1,5 +1,6 @@
 package com.levi.avaliator.documents
 
+import com.datastax.driver.core.utils.UUIDs
 import com.levi.avaliator.enuns.Improve
 import com.levi.avaliator.enuns.RangeTime
 import org.springframework.data.cassandra.core.mapping.Column
@@ -10,7 +11,7 @@ import java.util.*
 
 @Table
 class Rate  (
-        @PrimaryKey val id : UUID,
+        @PrimaryKey val id : UUID = UUIDs.timeBased(),
         @Column val value : Double,
         @Column val restaurantId : Int,
         @Column val orderId : Int,
