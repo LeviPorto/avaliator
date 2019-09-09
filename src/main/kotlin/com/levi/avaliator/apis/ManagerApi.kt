@@ -1,6 +1,6 @@
 package com.levi.avaliator.apis
 
-import com.levi.avaliator.entities.User
+import com.levi.avaliator.dtos.UserDTO
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.RequestMapping
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam
 @Component
 interface ManagerApi {
 
-    @RequestMapping(method = [RequestMethod.GET], value = ["/manager/user/findByIds"])
-    fun retrieveByIds(@RequestParam("ids") ids : List<Int>): List<User>
+    @RequestMapping(method = [RequestMethod.GET], value = ["/manager/user/findById"])
+    fun retrieveById(@RequestParam("id") id : Int): UserDTO
 
 }

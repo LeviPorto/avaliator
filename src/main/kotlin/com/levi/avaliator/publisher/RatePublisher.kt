@@ -1,4 +1,4 @@
-package com.levi.avaliator.dispatcher
+package com.levi.avaliator.publisher
 
 import com.levi.avaliator.dtos.AvaliatedRestaurantDTO
 import org.springframework.beans.factory.annotation.Value

@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
-import org.springframework.data.redis.serializer.GenericToStringSerializer
-import org.springframework.data.redis.serializer.StringRedisSerializer
+import org.springframework.data.redis.serializer.*
 
 @Configuration
 class RedisConfiguration {
@@ -29,8 +28,8 @@ class RedisConfiguration {
         val template = RedisTemplate<String, AverageUnitDTO>()
         template.setConnectionFactory(redisConnectionFactory())
         template.keySerializer = StringRedisSerializer()
-        template.hashValueSerializer = GenericToStringSerializer(Int::class.java)
-        template.valueSerializer = GenericToStringSerializer(Int::class.java)
+        template.hashValueSerializer = Jackson2JsonRedisSerializer(AverageUnitDTO::class.java)
+        template.valueSerializer = Jackson2JsonRedisSerializer(AverageUnitDTO::class.java)
         return template
     }
 
