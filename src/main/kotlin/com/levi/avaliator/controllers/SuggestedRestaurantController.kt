@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 class SuggestedRestaurantController(private val service : SuggestedRestaurantService) {
 
     @PostMapping
-    fun create(suggestedRestaurant: SuggestedRestaurant) : SuggestedRestaurant = service.create(suggestedRestaurant)
+    fun create(@RequestBody suggestedRestaurant: SuggestedRestaurant) : SuggestedRestaurant = service.create(suggestedRestaurant)
 
     @GetMapping("/getGoogleSuggestedRestaurants")
     fun getGoogleSuggestedRestaurants(@RequestParam radius : Double)  = service.retrieveNonRegisteredSuggestedRestaurants(radius)

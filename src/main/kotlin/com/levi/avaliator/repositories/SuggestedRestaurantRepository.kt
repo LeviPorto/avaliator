@@ -6,6 +6,6 @@ import java.util.*
 
 interface SuggestedRestaurantRepository : CassandraRepository<SuggestedRestaurant, UUID> {
 
-    fun findByName(name : String) : SuggestedRestaurant
+    fun findByName(name : String) : SuggestedRestaurant?
 
 }
