@@ -3,7 +3,7 @@ package com.levi.avaliator.dtos
 import java.time.Instant
 import java.util.*
 
-class RateDTO  (
+class RatingDTO  (
         val id : UUID,
         val value : Double,
         val restaurantId : Int,

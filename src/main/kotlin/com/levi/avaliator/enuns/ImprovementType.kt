@@ -1,5 +1,5 @@
 package com.levi.avaliator.enuns
 
-enum class Improve {
+enum class ImprovementType {
     DELIVERY_TIME, ATTENDIMENT
 }

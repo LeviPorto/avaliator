@@ -11,7 +11,7 @@ class SuggestedRestaurantController(private val service : SuggestedRestaurantSer
     @PostMapping
     fun create(@RequestBody suggestedRestaurant: SuggestedRestaurant) : SuggestedRestaurant = service.create(suggestedRestaurant)
 
-    @GetMapping("/getGoogleSuggestedRestaurants")
-    fun getGoogleSuggestedRestaurants(@RequestParam radius : Double)  = service.retrieveNonRegisteredSuggestedRestaurants(radius)
+    @GetMapping("/getNonRegisteredSuggestedRestaurants")
+    fun getNonRegisteredSuggestedRestaurants(@RequestParam radius : Double)  = service.retrieveNonRegisteredSuggestedRestaurants(radius)
 
 }

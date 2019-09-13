@@ -13,9 +13,4 @@ class SuggestedRestaurant (@PrimaryKey val id : UUID = UUIDs.timeBased(),
                            @Column val name : String,
                            @Column val address : String,
                            @Column val count : Int,
-                           @Column val phone : String) : Serializable {
-
-    constructor(id: UUID, name: String, address : String, count : Int, phone : String, increment : Int)
-            : this (id, name, address, count + increment, phone)
-
-}
+                           @Column val phone : String) : Serializable

@@ -1,6 +1,6 @@
 package com.levi.avaliator.config
 
-import com.levi.avaliator.dtos.AverageUnitDTO
+import com.levi.avaliator.dtos.UnitAverageDTO
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -24,12 +24,12 @@ class RedisConfiguration {
     }
 
     @Bean
-    fun redisRateTemplate(): RedisTemplate<String,AverageUnitDTO> {
-        val template = RedisTemplate<String, AverageUnitDTO>()
+    fun redisRatingTemplate(): RedisTemplate<String,UnitAverageDTO> {
+        val template = RedisTemplate<String, UnitAverageDTO>()
         template.setConnectionFactory(redisConnectionFactory())
         template.keySerializer = StringRedisSerializer()
-        template.hashValueSerializer = Jackson2JsonRedisSerializer(AverageUnitDTO::class.java)
-        template.valueSerializer = Jackson2JsonRedisSerializer(AverageUnitDTO::class.java)
+        template.hashValueSerializer = Jackson2JsonRedisSerializer(UnitAverageDTO::class.java)
+        template.valueSerializer = Jackson2JsonRedisSerializer(UnitAverageDTO::class.java)
         return template
     }
 

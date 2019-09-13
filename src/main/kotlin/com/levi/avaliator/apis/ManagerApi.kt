@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam
 @Component
 interface ManagerApi {
 
-    @RequestMapping(method = [RequestMethod.GET], value = ["/manager/user/findById"])
-    fun retrieveById(@RequestParam("id") id : Int): UserDTO
+    @RequestMapping(method = [RequestMethod.GET], value = ["/manager/user/findByIds"])
+    fun retrieveByIds(@RequestParam("ids") ids : List<Int>): List<UserDTO>
 
 }

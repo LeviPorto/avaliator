@@ -12,8 +12,6 @@ import org.springframework.kafka.core.ProducerFactory
 import org.springframework.kafka.support.serializer.JsonSerializer
 import java.util.HashMap
 
-//TODO //props[JsonSerializer.ADD_TYPE_INFO_HEADERS] = false
-
 @Configuration
 class KafkaProducerConfig {
 

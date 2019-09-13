@@ -1,7 +1,7 @@
 package com.levi.avaliator.documents
 
 import com.datastax.driver.core.utils.UUIDs
-import com.levi.avaliator.enuns.Improve
+import com.levi.avaliator.enuns.ImprovementType
 import com.levi.avaliator.enuns.RangeTime
 import org.springframework.data.cassandra.core.mapping.Column
 import org.springframework.data.cassandra.core.mapping.PrimaryKey
@@ -10,7 +10,7 @@ import java.time.Instant
 import java.util.*
 
 @Table
-class Rate  (
+class Rating  (
         @PrimaryKey val id : UUID = UUIDs.timeBased(),
         @Column val value : Double,
         @Column val restaurantId : Int,
@@ -20,5 +20,5 @@ class Rate  (
         @Column val date : Instant,
         @Column val arrivedOnTime : Boolean,
         @Column val arrivalRangeTime : RangeTime,
-        @Column val canImprove : Improve
+        @Column val improvementType : ImprovementType
 )
