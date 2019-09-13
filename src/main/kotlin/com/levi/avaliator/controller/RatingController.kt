@@ -1,8 +1,8 @@
-package com.levi.avaliator.controllers
+package com.levi.avaliator.controller
 
-import com.levi.avaliator.documents.Rating
-import com.levi.avaliator.dtos.RatingDTO
-import com.levi.avaliator.services.RatingService
+import com.levi.avaliator.entity.Rating
+import com.levi.avaliator.dto.RatingDTO
+import com.levi.avaliator.service.RatingService
 import org.springframework.web.bind.annotation.*
 
 @RestController

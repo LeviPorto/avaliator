@@ -1,7 +1,6 @@
-package com.levi.avaliator.documents
+package com.levi.avaliator.entity
 
 import com.datastax.driver.core.utils.UUIDs
-import org.springframework.data.annotation.Id
 import org.springframework.data.cassandra.core.mapping.Column
 import org.springframework.data.cassandra.core.mapping.PrimaryKey
 import org.springframework.data.cassandra.core.mapping.Table

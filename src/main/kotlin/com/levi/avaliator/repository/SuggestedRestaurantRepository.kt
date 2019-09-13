@@ -1,6 +1,6 @@
-package com.levi.avaliator.repositories
+package com.levi.avaliator.repository
 
-import com.levi.avaliator.documents.SuggestedRestaurant
+import com.levi.avaliator.entity.SuggestedRestaurant
 import org.springframework.data.cassandra.repository.CassandraRepository
 import java.util.*
 

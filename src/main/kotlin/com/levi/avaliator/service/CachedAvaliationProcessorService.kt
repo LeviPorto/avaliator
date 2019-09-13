@@ -1,7 +1,7 @@
-package com.levi.avaliator.services
+package com.levi.avaliator.service
 
-import com.levi.avaliator.dtos.UnitAverageDTO
-import com.levi.avaliator.services.cache.CachedService
+import com.levi.avaliator.dto.UnitAverageDTO
+import com.levi.avaliator.service.cache.CachedService
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Service
 import java.util.concurrent.TimeUnit

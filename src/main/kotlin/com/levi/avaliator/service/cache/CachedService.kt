@@ -1,4 +1,4 @@
-package com.levi.avaliator.services.cache
+package com.levi.avaliator.service.cache
 
 import java.util.concurrent.TimeUnit
 

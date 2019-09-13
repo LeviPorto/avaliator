@@ -1,7 +1,7 @@
-package com.levi.avaliator.controllers
+package com.levi.avaliator.controller
 
-import com.levi.avaliator.documents.SuggestedRestaurant
-import com.levi.avaliator.services.SuggestedRestaurantService
+import com.levi.avaliator.entity.SuggestedRestaurant
+import com.levi.avaliator.service.SuggestedRestaurantService
 import org.springframework.web.bind.annotation.*
 
 @RestController

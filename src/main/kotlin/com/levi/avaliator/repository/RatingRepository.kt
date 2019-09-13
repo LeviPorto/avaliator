@@ -1,6 +1,6 @@
-package com.levi.avaliator.repositories
+package com.levi.avaliator.repository
 
-import com.levi.avaliator.documents.Rating
+import com.levi.avaliator.entity.Rating
 import org.springframework.data.cassandra.repository.CassandraRepository
 import org.springframework.stereotype.Repository
 import java.util.*

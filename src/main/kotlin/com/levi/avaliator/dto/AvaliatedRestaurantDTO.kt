@@ -1,4 +1,4 @@
-package com.levi.avaliator.dtos
+package com.levi.avaliator.dto
 
 class AvaliatedRestaurantDTO (
         val restaurantId : Int,

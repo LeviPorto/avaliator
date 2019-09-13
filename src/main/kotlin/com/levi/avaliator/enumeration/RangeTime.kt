@@ -1,4 +1,4 @@
-package com.levi.avaliator.enuns
+package com.levi.avaliator.enumeration
 
 enum class RangeTime {
     UNTIL_FIFTEEN_MINUTES, UNTIL_THIRTY_MINUTES,

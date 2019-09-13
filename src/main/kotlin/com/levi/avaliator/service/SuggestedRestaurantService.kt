@@ -1,8 +1,7 @@
-package com.levi.avaliator.services
+package com.levi.avaliator.service
 
-import com.levi.avaliator.documents.SuggestedRestaurant
-import com.levi.avaliator.repositories.SuggestedRestaurantRepository
-import org.springframework.data.cassandra.core.CassandraOperations
+import com.levi.avaliator.entity.SuggestedRestaurant
+import com.levi.avaliator.repository.SuggestedRestaurantRepository
 import org.springframework.stereotype.Service
 
 @Service

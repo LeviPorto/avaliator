@@ -1,6 +1,6 @@
 package com.levi.avaliator.config
 
-import com.levi.avaliator.dtos.AvaliatedRestaurantDTO
+import com.levi.avaliator.dto.AvaliatedRestaurantDTO
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.beans.factory.annotation.Value

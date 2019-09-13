@@ -1,6 +1,6 @@
 package com.levi.avaliator.config
 
-import com.levi.avaliator.dtos.UnitAverageDTO
+import com.levi.avaliator.dto.UnitAverageDTO
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

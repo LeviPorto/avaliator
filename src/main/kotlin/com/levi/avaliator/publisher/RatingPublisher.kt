@@ -1,6 +1,6 @@
 package com.levi.avaliator.publisher
 
-import com.levi.avaliator.dtos.AvaliatedRestaurantDTO
+import com.levi.avaliator.dto.AvaliatedRestaurantDTO
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.support.KafkaHeaders

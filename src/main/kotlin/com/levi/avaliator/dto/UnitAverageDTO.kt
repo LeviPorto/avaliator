@@ -1,4 +1,4 @@
-package com.levi.avaliator.dtos
+package com.levi.avaliator.dto
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty

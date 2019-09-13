@@ -1,6 +1,6 @@
-package com.levi.avaliator.apis
+package com.levi.avaliator.api
 
-import com.levi.avaliator.dtos.UserDTO
+import com.levi.avaliator.dto.UserDTO
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.RequestMapping
