@@ -5,14 +5,12 @@ import com.levi.avaliator.AvaliatorApplication
 import com.levi.avaliator.entity.SuggestedRestaurant
 import org.junit.After
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
-import java.time.Instant
 import java.util.*
 
 @RunWith(SpringRunner::class)
@@ -23,13 +21,13 @@ class SuggestedRepositoryTest {
     @Autowired
     private val repository: SuggestedRestaurantRepository? = null
 
-    private var uuid : UUID? = null
-    private var instant : Instant? = null
+    companion object {
+        private val UUID : UUID = UUIDs.timeBased()
 
-    @Before
-    fun setUp() {
-        uuid = UUIDs.timeBased()
-        instant = Instant.now()
+        private const val SUGGESTED_RESTAURANT_NAME = "Test Restaurant"
+        private const val SUGGESTED_RESTAURANT_ADDRESS = "Test Address"
+        private const val SUGGESTED_RESTAURANT_COUNT = 3
+        private const val SUGGESTED_RESTAURANT_PHONE = "Test Phone"
     }
 
     @After
@@ -40,12 +38,13 @@ class SuggestedRepositoryTest {
     @Test
     fun findByName() {
         repository!!.save(givenSuggestedRestaurant())
-        val restaurantRatings = repository.findByName("Test Restaurant")
+        val restaurantRatings = repository.findByName(SUGGESTED_RESTAURANT_NAME)
         Assert.assertEquals(restaurantRatings!!.name, givenSuggestedRestaurant().name)
     }
 
     private fun givenSuggestedRestaurant() : SuggestedRestaurant {
-        return SuggestedRestaurant(UUIDs.timeBased(), "Test Restaurant", "Test Address", 3, "Test Phone")
+        return SuggestedRestaurant(UUID, SUGGESTED_RESTAURANT_NAME, SUGGESTED_RESTAURANT_ADDRESS,
+                SUGGESTED_RESTAURANT_COUNT, SUGGESTED_RESTAURANT_PHONE)
     }
 
 }

@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import java.util.*
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(classes = [AvaliatorApplication::class])
@@ -35,15 +36,24 @@ class SuggestedRestaurantControllerTest {
     @MockBean
     private val service: SuggestedRestaurantService? = null
 
-    private val URL_BASE = "/avaliator/suggestedRestaurant/"
     private var objectMapper: ObjectMapper? = null
+
+    companion object {
+        private const val URL_BASE = "/avaliator/suggestedRestaurant/"
+
+        private val UUID : UUID = UUIDs.timeBased()
+
+        private const val SUGGESTED_RESTAURANT_NAME = "Test Restaurant"
+        private const val SUGGESTED_RESTAURANT_ADDRESS = "Test Address"
+        private const val SUGGESTED_RESTAURANT_COUNT = 3
+        private const val SUGGESTED_RESTAURANT_PHONE = "Test Phone"
+    }
 
     @Before
     fun setUp() {
         objectMapper = ObjectMapper()
-        val module = JavaTimeModule()
-        objectMapper!!.registerModule(module)
-        objectMapper!!.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        objectMapper!!.registerModule(JavaTimeModule())
+        objectMapper!!.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
     }
 
     @Test
@@ -58,7 +68,8 @@ class SuggestedRestaurantControllerTest {
     }
 
     private fun givenSuggestedRestaurant() : SuggestedRestaurant {
-        return SuggestedRestaurant(UUIDs.timeBased(), "Test Restaurant", "Test Address", 3, "Test Phone")
+        return SuggestedRestaurant(UUID, SUGGESTED_RESTAURANT_NAME, SUGGESTED_RESTAURANT_ADDRESS,
+                SUGGESTED_RESTAURANT_COUNT, SUGGESTED_RESTAURANT_PHONE)
     }
 
 }

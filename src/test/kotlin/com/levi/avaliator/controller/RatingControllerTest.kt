@@ -1,7 +1,6 @@
 package com.levi.avaliator.controller
 
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 import com.datastax.driver.core.utils.UUIDs
@@ -19,7 +18,6 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.BDDMockito
-import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -44,20 +42,31 @@ class RatingControllerTest {
     @MockBean
     private val service: RatingService? = null
 
-    private var uuid : UUID? = null
-    private var instant : Instant? = null
-
-    private val URL_BASE = "/avaliator/rating/"
     private var objectMapper: ObjectMapper? = null
+
+    companion object {
+        private const val URL_BASE = "/avaliator/rating/"
+        private const val URL_FIND_BY_RESTAURANT = "/findByRestaurant/1"
+
+        private val UUID : UUID = UUIDs.timeBased()
+        private val INSTANT : Instant = Instant.now()
+
+        private const val RATING_VALUE = 3.0
+        private const val RATING_RESTAURANT_ID = 1
+        private const val RATING_ORDER_ID = 1
+        private const val FIRST_USER_ID = 1
+        private const val FIRST_USER_NAME = "Test Name 1"
+        private const val SECOND_USER_ID = 2
+        private const val SECOND_USER_NAME = "Test Name 2"
+        private const val RATING_COMMENT = "Test Comment"
+    }
+
 
     @Before
     fun setUp() {
-        uuid = UUIDs.timeBased()
-        instant = Instant.now()
         objectMapper = ObjectMapper()
-        val module = JavaTimeModule()
-        objectMapper!!.registerModule(module)
-        objectMapper!!.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        objectMapper!!.registerModule(JavaTimeModule())
+        objectMapper!!.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
     }
 
     @Test
@@ -73,8 +82,8 @@ class RatingControllerTest {
 
     @Test
     fun findByRestaurant() {
-        BDDMockito.given(service!!.retrieveRestaurantRatings(1)).willReturn(givenRestaurantRatingsDTO())
-        mvc!!.perform(MockMvcRequestBuilders.get("$URL_BASE/findBy/1")
+        BDDMockito.given(service!!.retrieveRestaurantRatings(RATING_RESTAURANT_ID)).willReturn(givenRestaurantRatingsDTO())
+        mvc!!.perform(MockMvcRequestBuilders.get(URL_BASE + URL_FIND_BY_RESTAURANT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)).andDo(print())
                 .andExpect(status().isOk)
@@ -82,14 +91,14 @@ class RatingControllerTest {
     }
 
     private fun givenRating() : Rating {
-        return Rating(uuid!!, 3.0, 1, 1, 1, "Test Comment!",
-                instant!!, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
+        return Rating(UUID, RATING_VALUE, RATING_RESTAURANT_ID, RATING_ORDER_ID, FIRST_USER_ID, RATING_COMMENT,
+                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
     }
 
     private fun givenRestaurantRatingsDTO() : List<RatingDTO> {
-        return listOf(RatingDTO(uuid!!, 3.0, 1, UserDTO(1, "Test Name 1"),
-                "Test Comment!", instant!!), RatingDTO(uuid!!, 1.0, 1,
-                UserDTO(2, "Test Name 2"), "Test Comment!", instant!!))
+        return listOf(RatingDTO(UUID, RATING_VALUE, RATING_RESTAURANT_ID, UserDTO(FIRST_USER_ID, FIRST_USER_NAME),
+                RATING_COMMENT, INSTANT), RatingDTO(UUID, RATING_VALUE, RATING_RESTAURANT_ID,
+                UserDTO(SECOND_USER_ID, SECOND_USER_NAME), RATING_COMMENT, INSTANT))
     }
 
 }

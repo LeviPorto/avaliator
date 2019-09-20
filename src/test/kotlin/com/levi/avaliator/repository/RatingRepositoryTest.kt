@@ -7,7 +7,6 @@ import com.levi.avaliator.enumeration.ImprovementType
 import com.levi.avaliator.enumeration.RangeTime
 import org.junit.After
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,13 +24,16 @@ class RatingRepositoryTest {
     @Autowired
     private val repository: RatingRepository? = null
 
-    private var uuid : UUID? = null
-    private var instant : Instant? = null
+    companion object {
+        private val UUID : UUID = UUIDs.timeBased()
+        private val INSTANT : Instant = Instant.now()
 
-    @Before
-    fun setUp() {
-        uuid = UUIDs.timeBased()
-        instant = Instant.now()
+        private const val RATING_VALUE = 3.0
+        private const val RATING_FIRST_RESTAURANT_ID = 1
+        private const val RATING_SECOND_RESTAURANT_ID = 2
+        private const val RATING_ORDER_ID = 1
+        private const val FIRST_USER_ID = 1
+        private const val RATING_COMMENT = "Test Comment"
     }
 
     @After
@@ -44,18 +46,18 @@ class RatingRepositoryTest {
         repository!!.save(givenRatingOfFirstRestaurant())
         repository.save(givenRatingOfFirstRestaurant())
         repository.save(givenRatingOfSecondRestaurant())
-        val restaurantRatings = repository.findByRestaurantId(2)
+        val restaurantRatings = repository.findByRestaurantId(RATING_SECOND_RESTAURANT_ID)
         Assert.assertEquals(restaurantRatings.size, 1)
     }
 
     private fun givenRatingOfFirstRestaurant() : Rating {
-        return Rating(uuid!!, 3.0, 1, 1, 1, "Test Comment!",
-                instant!!, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
+        return Rating(UUID, RATING_VALUE, RATING_FIRST_RESTAURANT_ID, RATING_ORDER_ID, FIRST_USER_ID, RATING_COMMENT,
+                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
     }
 
     private fun givenRatingOfSecondRestaurant() : Rating {
-        return Rating(uuid!!, 3.0, 2, 1, 1, "Test Comment!",
-                instant!!, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
+        return Rating(UUID, RATING_VALUE, RATING_SECOND_RESTAURANT_ID, RATING_ORDER_ID, FIRST_USER_ID, RATING_COMMENT,
+                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
     }
 
 }

@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
+import java.util.*
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(classes = [AvaliatorApplication::class])
@@ -26,7 +27,14 @@ class SuggestedRestaurantServiceTest {
     @MockBean
     private val repository: SuggestedRestaurantRepository? = null
 
-    //TODO tentar ver melhor esse teste
+    companion object {
+        private val UUID : UUID = UUIDs.timeBased()
+
+        private const val SUGGESTED_RESTAURANT_NAME = "Test Restaurant"
+        private const val SUGGESTED_RESTAURANT_ADDRESS = "Test Address"
+        private const val SUGGESTED_RESTAURANT_COUNT = 3
+        private const val SUGGESTED_RESTAURANT_PHONE = "Test Phone"
+    }
 
     @Test
     fun createWithExistent() {
@@ -47,11 +55,12 @@ class SuggestedRestaurantServiceTest {
     }
 
     private fun givenFirstSuggestedRestaurant() : SuggestedRestaurant {
-        return SuggestedRestaurant(UUIDs.timeBased(), "Test Restaurant", "Test Address","Test Phone")
+        return SuggestedRestaurant(UUID, SUGGESTED_RESTAURANT_NAME, SUGGESTED_RESTAURANT_ADDRESS , SUGGESTED_RESTAURANT_PHONE)
     }
 
     private fun givenSuggestedRestaurant() : SuggestedRestaurant {
-        return SuggestedRestaurant(UUIDs.timeBased(), "Test Restaurant", "Test Address", 3, "Test Phone")
+        return SuggestedRestaurant(UUID, SUGGESTED_RESTAURANT_NAME, SUGGESTED_RESTAURANT_ADDRESS, SUGGESTED_RESTAURANT_COUNT,
+                SUGGESTED_RESTAURANT_PHONE)
     }
 
 }
