@@ -1,11 +1,11 @@
 spring:
   application:
-    name: avaliator
+    name: evaluator
   main:
     allow-bean-definition-overriding: true
   data:
     cassandra:
-      keyspace-name: avaliator
+      keyspace-name: evaluator
       contact-points: localhost
       port: 9042
       schema-action: create_if_not_exists
