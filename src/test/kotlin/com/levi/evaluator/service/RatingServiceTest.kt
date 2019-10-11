@@ -5,9 +5,9 @@ import com.levi.evaluator.EvaluatorApplication
 import com.levi.evaluator.api.ManagerApi
 import com.levi.evaluator.dto.RatingDTO
 import com.levi.evaluator.dto.UserDTO
-import com.levi.evaluator.entity.Rating
-import com.levi.evaluator.enumeration.ImprovementType
-import com.levi.evaluator.enumeration.RangeTime
+import com.levi.evaluator.domain.Rating
+import com.levi.evaluator.domain.enumeration.ImprovementType
+import com.levi.evaluator.domain.enumeration.RangeTime
 import com.levi.evaluator.repository.RatingRepository
 import org.junit.Assert
 import org.junit.Test
@@ -74,14 +74,14 @@ class RatingServiceTest {
 
     private fun givenRestaurantRatings(): List<Rating> {
         return listOf(Rating(UUID, RATING_VALUE_THREE, RATING_RESTAURANT_ID, RATING_ORDER_ID, FIRST_USER_ID, RATING_COMMENT,
-                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT), Rating(UUIDs.timeBased(),
+                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDANCE), Rating(UUIDs.timeBased(),
                 RATING_VALUE_ONE, RATING_RESTAURANT_ID, RATING_ORDER_ID, SECOND_USER_ID, RATING_COMMENT,
-                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT))
+                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDANCE))
     }
 
     private fun givenRating(): Rating {
         return Rating(UUID, RATING_VALUE_THREE, RATING_RESTAURANT_ID, RATING_ORDER_ID, FIRST_USER_ID, RATING_COMMENT,
-                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
+                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDANCE)
     }
 
     private fun givenEvaluators(): List<UserDTO> {

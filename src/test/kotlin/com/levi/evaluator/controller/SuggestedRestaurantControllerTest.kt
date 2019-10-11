@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.levi.evaluator.EvaluatorApplication
-import com.levi.evaluator.entity.SuggestedRestaurant
+import com.levi.evaluator.domain.SuggestedRestaurant
 import com.levi.evaluator.service.SuggestedRestaurantService
 import org.junit.Before
 import org.junit.Test

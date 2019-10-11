@@ -12,7 +12,7 @@ import java.text.ParseException
 class RatingPublisher(private val kafkaTemplate: KafkaTemplate<String, EvaluatedRestaurantDTO>) {
 
     @Value("\${spring.kafka.topic.rating}")
-    var topicRating: String? = null
+    val topicRating: String? = null
 
     @Throws(ParseException::class)
     fun sendRatingToTopic(evaluatedRestaurantDTO: EvaluatedRestaurantDTO) {

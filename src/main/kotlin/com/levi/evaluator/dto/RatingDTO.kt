@@ -11,7 +11,6 @@ class RatingDTO(
         val comment: String,
         val date: Instant
 ) {
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -25,16 +24,6 @@ class RatingDTO(
         if (date != other.date) return false
 
         return true
-    }
-
-    override fun hashCode(): Int {
-        var result = id.hashCode()
-        result = 31 * result + value.hashCode()
-        result = 31 * result + restaurantId
-        result = 31 * result + userDTO.hashCode()
-        result = 31 * result + comment.hashCode()
-        result = 31 * result + date.hashCode()
-        return result
     }
 
 }

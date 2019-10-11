@@ -2,9 +2,9 @@ package com.levi.evaluator.repository
 
 import com.datastax.driver.core.utils.UUIDs
 import com.levi.evaluator.EvaluatorApplication
-import com.levi.evaluator.entity.Rating
-import com.levi.evaluator.enumeration.ImprovementType
-import com.levi.evaluator.enumeration.RangeTime
+import com.levi.evaluator.domain.Rating
+import com.levi.evaluator.domain.enumeration.ImprovementType
+import com.levi.evaluator.domain.enumeration.RangeTime
 import org.junit.After
 import org.junit.Assert
 import org.junit.Test
@@ -52,12 +52,12 @@ class RatingRepositoryTest {
 
     private fun givenRatingOfFirstRestaurant(): Rating {
         return Rating(UUID, RATING_VALUE, RATING_FIRST_RESTAURANT_ID, RATING_ORDER_ID, FIRST_USER_ID, RATING_COMMENT,
-                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
+                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDANCE)
     }
 
     private fun givenRatingOfSecondRestaurant(): Rating {
         return Rating(UUID, RATING_VALUE, RATING_SECOND_RESTAURANT_ID, RATING_ORDER_ID, FIRST_USER_ID, RATING_COMMENT,
-                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDIMENT)
+                INSTANT, true, RangeTime.UNTIL_FIFTEEN_MINUTES, ImprovementType.ATTENDANCE)
     }
 
 }

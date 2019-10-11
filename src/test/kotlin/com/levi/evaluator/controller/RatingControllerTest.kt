@@ -10,9 +10,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.levi.evaluator.EvaluatorApplication
 import com.levi.evaluator.dto.RatingDTO
 import com.levi.evaluator.dto.UserDTO
-import com.levi.evaluator.entity.Rating
-import com.levi.evaluator.enumeration.ImprovementType
-import com.levi.evaluator.enumeration.RangeTime
+import com.levi.evaluator.domain.Rating
+import com.levi.evaluator.domain.enumeration.ImprovementType
+import com.levi.evaluator.domain.enumeration.RangeTime
 import com.levi.evaluator.service.RatingService
 import org.junit.Before
 import org.junit.Test

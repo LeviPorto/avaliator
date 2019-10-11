@@ -1,10 +1,11 @@
 package com.levi.evaluator.service
 
 import com.levi.evaluator.dto.EvaluatedRestaurantDTO
-import com.levi.evaluator.entity.Rating
+import com.levi.evaluator.domain.Rating
 import com.levi.evaluator.dto.UnitAverageDTO
 import com.levi.evaluator.dto.RatingDTO
 import com.levi.evaluator.publisher.RatingPublisher
+import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Service
 import java.util.concurrent.TimeUnit
 
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit
 class EvaluationProcessorService(private val cachedService: CachedEvaluationProcessorService,
                                  private val ratingPublisher: RatingPublisher) {
 
+    @Async
     fun processRating(cachedRestaurantAverageRating: UnitAverageDTO?, rating: Rating, previousRatings: List<RatingDTO>? = null) {
         val calculatedRating = if (cachedRestaurantAverageRating == null) {
             calculateAverageRestaurantRatings(rating, previousRatings!!)

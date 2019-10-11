@@ -2,7 +2,7 @@ package com.levi.evaluator.service
 
 import com.datastax.driver.core.utils.UUIDs
 import com.levi.evaluator.EvaluatorApplication
-import com.levi.evaluator.entity.SuggestedRestaurant
+import com.levi.evaluator.domain.SuggestedRestaurant
 import com.levi.evaluator.repository.SuggestedRestaurantRepository
 import org.junit.Assert
 import org.junit.Test

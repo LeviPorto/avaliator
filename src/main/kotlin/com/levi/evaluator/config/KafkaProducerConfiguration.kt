@@ -13,10 +13,10 @@ import org.springframework.kafka.support.serializer.JsonSerializer
 import java.util.HashMap
 
 @Configuration
-class KafkaProducerConfig {
+class KafkaProducerConfiguration {
 
     @Value("\${spring.kafka.bootstrap-servers}")
-    var bootstrapServer: String? = null
+    val bootstrapServer: String? = null
 
     @Bean
     fun producerConfigs(): Map<String, Any> {

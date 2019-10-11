@@ -13,10 +13,4 @@ class UserDTO(val id: Int, val name: String) {
         return true
     }
 
-    override fun hashCode(): Int {
-        var result = id
-        result = 31 * result + name.hashCode()
-        return result
-    }
-
 }

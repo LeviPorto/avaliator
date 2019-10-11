@@ -13,9 +13,9 @@ import org.springframework.data.redis.serializer.*
 class RedisConfiguration {
 
     @Value("\${spring.redis.port}")
-    var port: Int? = null
+    val port: Int? = null
     @Value("\${spring.redis.host}")
-    var host: String? = null
+    val host: String? = null
 
     @Bean
     fun redisConnectionFactory(): JedisConnectionFactory {

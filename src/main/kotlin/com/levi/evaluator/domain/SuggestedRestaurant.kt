@@ -1,4 +1,4 @@
-package com.levi.evaluator.entity
+package com.levi.evaluator.domain
 
 import com.datastax.driver.core.utils.UUIDs
 import org.springframework.data.cassandra.core.mapping.Column
